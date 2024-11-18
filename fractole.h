@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractole.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
+/*   By: plbuet <plbuet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:59:12 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/14 16:47:35 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/18 12:16:28 by plbuet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define MAXITER 700
-# define HEIGTH 1000
-# define WIDTH 1000
+# define MAXITER 20000
+# define HEIGTH 600
+# define WIDTH 600
 # define ESC 53
 # define UP 126
 # define DOWN 125
@@ -59,5 +59,6 @@ void	julia(t_data *data, t_fractale *fract);
 int		draw_julia( double cr, double ci, double z_im, double z_re);
 int		set_color(int i);
 void	put_pixel(t_data *data, int color , int x, int y);
-
+void	zoomup(t_data* data, t_fractale *fract, int x, int y);
+void	zoomdown(t_data* data, t_fractale *fract, int x, int y);
 #endif

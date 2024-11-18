@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
+/*   By: plbuet <plbuet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:38:33 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/14 15:06:46 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/18 11:30:18 by plbuet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 int set_color(int i)
 {
+	int r;
+	int g;
+	int b;
 	if (i == MAXITER)
 		return (0x000000);
 	else
-		return (0x0F0FF0 * i /MAXITER);
+	{
+        // Utilisation des 3 composantes RGB avec des décalages différents
+        r = (i * 0) % 256;
+        g = (i * 11) % 256;
+        b = (i * 23) % 256;
+        
+        return (r << 16) + (g << 8) + b;
+    }
 }
 
 void put_pixel(t_data *data, int color , int x, int y)
