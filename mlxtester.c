@@ -20,11 +20,14 @@ int handle_mouse(int mouse_put, int x, int y, t_data *data) {
 	return (0);
 }
 
-int main()
+int main(int c, char **v)
 {
 	t_data img;
-	img.fract.ci = 0.01;
-	img.fract.cr = 0.285;
+
+	if (c < 4 )
+		return (0);
+	img.fract.ci = ft_atof(v[2]);
+	img.fract.cr = ft_atof(v[3]);
 	img.fract.xmax = 2;
 	img.fract.xmin = -2;
 	img.fract.ymax = 2;

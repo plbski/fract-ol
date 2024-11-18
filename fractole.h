@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractole.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plbuet <plbuet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:59:12 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/18 12:16:28 by plbuet           ###   ########.fr       */
+/*   Updated: 2024/11/18 20:00:08 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdlib.h>
 
 # define MAXITER 20000
-# define HEIGTH 600
-# define WIDTH 600
+# define HEIGTH 1920
+# define WIDTH 1080
 # define ESC 53
 # define UP 126
 # define DOWN 125
@@ -61,4 +61,5 @@ int		set_color(int i);
 void	put_pixel(t_data *data, int color , int x, int y);
 void	zoomup(t_data* data, t_fractale *fract, int x, int y);
 void	zoomdown(t_data* data, t_fractale *fract, int x, int y);
+double	ft_atof(char *s);
 #endif
