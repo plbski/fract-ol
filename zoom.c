@@ -6,7 +6,7 @@
 /*   By: plbuet <plbuet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:11:07 by plbuet            #+#    #+#             */
-/*   Updated: 2024/11/18 12:19:08 by plbuet           ###   ########.fr       */
+/*   Updated: 2024/11/19 16:59:12 by plbuet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void zoomdown(t_data* data, t_fractale *fract, int x, int y)
 	fract->xmax = mx + ((1 - ratio_x) * new_width) ;
 	fract->ymin = my - (ratio_y  * new_height);
 	fract->ymax = my + ((1 - ratio_y) * new_height);
-	julia(data, fract);
+	if (data->name == 2)
+		mandelbrot(data, fract);
+	else
+		julia(data, fract);
 	mlx_put_image_to_window(data->ptr, data->winp, data->imp, 0, 0);
 }
 
@@ -54,7 +57,10 @@ void zoomup(t_data* data, t_fractale *fract, int x, int y)
 	fract->xmax = mx + ((1 - ratio_x) * new_width) ;
 	fract->ymin = my - (ratio_y  * new_height);
 	fract->ymax = my + ((1 - ratio_y) * new_height);
-	julia(data, fract);
+	if (data->name == 2)
+		mandelbrot(data, fract);
+	else
+		julia(data, fract);
 	mlx_put_image_to_window(data->ptr, data->winp, data->imp, 0, 0);
 }
 
