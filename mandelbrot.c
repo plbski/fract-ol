@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plbuet <plbuet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:37:46 by plbuet            #+#    #+#             */
-/*   Updated: 2024/11/19 16:58:11 by plbuet           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:35:31 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractole.h"
 
-int draw_mandelbrot( double x, double y, double z_im, double z_re)
+int	draw_mandelbrot( double x, double y, double z_im, double z_re)
 {
-	int i ;
-	double tmp;
+	int		i ;
+	double	tmp;
 
 	i = 0;
 	while (i < MAXITER && (z_im * z_im + z_re * z_re <= 4))
 	{
-		tmp = z_re * z_re - z_im *  z_im + x;
+		tmp = z_re * z_re - z_im * z_im + x;
 		z_im = 2 * z_im * z_re + y;
 		z_re = tmp;
 		i ++;
 	}
-	return (set_color(i));
+	return (i);
 }
 
 void	mandelbrot(t_data *data, t_fractale *fract)
@@ -34,7 +34,7 @@ void	mandelbrot(t_data *data, t_fractale *fract)
 	double	y;
 	double	z_re;
 	double	z_im ;
-	int	color;
+	int		color;
 
 	y = 0;
 	while (y < HEIGTH)
@@ -43,8 +43,9 @@ void	mandelbrot(t_data *data, t_fractale *fract)
 		while (x < WIDTH)
 		{
 			z_re = fract->xmin + (fract->xmax - fract->xmin) * x / WIDTH;
-			z_im = fract->ymin + (fract->ymax - fract->ymin) * y/ HEIGTH;
+			z_im = fract->ymin + (fract->ymax - fract->ymin) * y / HEIGTH;
 			color = draw_mandelbrot(z_re, z_im, z_im, z_re);
+			color = set_color(color, data);
 			put_pixel(data, color, x, y);
 			x ++;
 		}

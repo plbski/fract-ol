@@ -1,6 +1,6 @@
 
 # Fichiers source
-SOURCE = mlxtester.c julia.c zoom.c utils.c mandelbrot.c
+SOURCE = mlxtester.c julia.c zoom.c utils.c mandelbrot.c handle.c
 
 # Objets
 OBJET = $(SOURCE:.c=.o)
