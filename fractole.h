@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:59:12 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/20 16:30:40 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/21 16:52:29 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# define MAXITER 100
+# define MAXITER 90
 # define HEIGTH 1000
 # define WIDTH 1000
 # define ESC 53
@@ -99,5 +99,6 @@ int		draw_mandelbrot( double x, double y, double z_im, double z_re);
 int		handle_key(int key_press, t_data *data);
 int		handle_mouse(int mouse_put, int x, int y, t_data *data);
 void	mouve(t_fractale *fract, int key);
+void	burningship(t_data *data, t_fractale *fract);
 
 #endif

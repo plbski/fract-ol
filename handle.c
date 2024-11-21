@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:16:38 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/20 16:36:39 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/21 11:46:54 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int	handle_key(int key_press, t_data *data)
 		manage_const(key_press, &data->fract);
 	if (data->name == 2)
 		mandelbrot(data, &data->fract);
-	else
+	else if (data->name == 1)
 		julia(data, &data->fract);
+	else
+		burningship(data, &data->fract);
 	mlx_put_image_to_window(data->ptr, data->winp, data->imp, 0, 0);
 	return (0);
 }

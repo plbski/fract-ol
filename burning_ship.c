@@ -1,43 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 11:38:33 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 12:00:17 by pbuet            ###   ########.fr       */
+/*   Created: 2024/11/21 11:40:42 by pbuet             #+#    #+#             */
+/*   Updated: 2024/11/21 11:51:08 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractole.h"
 
-int	set_color(int i, t_data *data)
-{
-	int	r;
-	int	g;
-	int	b;
-
-	if (i == MAXITER)
-		return (0x000000);
-	else
-	{
-		r = (i * data->rgb.r) % 256;
-		g = (i * data->rgb.g) % 256;
-		b = (i * data->rgb.b) % 256;
-		return ((r << 16) + (g << 8) + b);
-	}
-}
-
-void	put_pixel(t_data *data, int color, int x, int y)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	draw_julia( double cr, double ci, double z_im, double z_re)
+int	draw_burningship( double x, double y, double z_im, double z_re)
 {
 	int		i ;
 	double	tmp;
@@ -45,22 +20,21 @@ int	draw_julia( double cr, double ci, double z_im, double z_re)
 	i = 0;
 	while (i < MAXITER && (z_im * z_im + z_re * z_re <= 4))
 	{
-		tmp = z_re * z_re - z_im * z_im + cr;
-		z_im = 2 * z_im * z_re + ci;
+		tmp = z_re * z_re - z_im * z_im + x;
+		z_im = fabs(2 * z_im * z_re) + y;
 		z_re = tmp;
 		i ++;
 	}
 	return (i);
 }
 
-void	julia(t_data *data, t_fractale *fract)
+void	burningship(t_data *data, t_fractale *fract)
 {
-	int		x ;
-	int		y ;
+	double	x ;
+	double	y;
 	double	z_re;
 	double	z_im ;
 	int		color;
-	
 
 	y = 0;
 	while (y < HEIGTH)
@@ -70,7 +44,7 @@ void	julia(t_data *data, t_fractale *fract)
 		{
 			z_re = fract->xmin + (fract->xmax - fract->xmin) * x / WIDTH;
 			z_im = fract->ymin + (fract->ymax - fract->ymin) * y / HEIGTH;
-			color = draw_julia(fract->cr, fract->ci, z_im, z_re);
+			color = draw_burningship(z_re, z_im, z_im, z_re);
 			color = set_color(color, data);
 			put_pixel(data, color, x, y);
 			x ++;

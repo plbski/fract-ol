@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:18:32 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/20 16:01:17 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/21 16:40:32 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_input(int c, char **s)
 		ft_putstr("\n nom : \n si julia \n const im: \n const reel");
 		exit(0);
 	}
-	if (ft_strcmp(s[1], "julia") != 0 && ft_strcmp(s[1], "mandelbrot") != 0)
+	if (ft_strcmp(s[1], "julia") != 0 && ft_strcmp(s[1], "mandelbrot") != 0 && ft_strcmp(s[1], "burningship") != 0)
 	{
 		ft_putstr("ERROR fractale non reconnu");
 		ft_putstr("\n nom : \n si julia \n const im: \n const reel");
@@ -49,8 +49,10 @@ void	ini_img(t_data *img, char **v)
 		img->fract.cr = ft_atof(v[3], 0, 0);
 		img->name = 1;
 	}
-	else
+	else if (ft_strcmp(v[1], "mandelbrot") == 0)
 		img->name = 2;
+	else 
+		img->name = 3;
 	img->fract.xmax = 2;
 	img->fract.xmin = -2;
 	img->fract.ymax = 2;
@@ -60,9 +62,9 @@ void	ini_img(t_data *img, char **v)
 	img->imp = mlx_new_image(img->ptr, WIDTH, HEIGTH);
 	img->addr = mlx_get_data_addr(img->imp, &img->bits_per_pixel, \
 	&img->size_line, &img->endian);
-	img->rgb.r = 0;
-	img->rgb.g = 5;
-	img->rgb.b = 0;
+	img->rgb.r = 255;
+	img->rgb.g = 21;
+	img->rgb.b = 21;
 
 }
 
@@ -74,8 +76,10 @@ int	main(int c, char **v)
 	ini_img(&img, v);
 	if (img.name == 1)
 		julia(&img, &img.fract);
-	else
+	else if (img.name == 2)
 		mandelbrot(&img, &img.fract);
+	else
+		burningship(&img, &img.fract);
 	mlx_put_image_to_window(img.ptr, img.winp, img.imp, 0, 0);
 	mlx_mouse_hook(img.winp, handle_mouse, &img);
 	mlx_key_hook(img.winp, handle_key, &img);
