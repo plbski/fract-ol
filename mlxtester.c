@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:18:32 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 16:40:32 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/22 11:11:12 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,28 @@ void	check_input(int c, char **s)
 {
 	if (c < 2)
 	{
-		ft_putstr("ERROR preciser la farctale voulue");
-		ft_putstr("\n nom : \n si julia \n const im: \n const reel");
-		exit(0);
+		ft_putstr("\033[0;31mERROR preciser la farctale voulue");
+		ft_putstr("\033[0;33m\nnom:\nsi julia\nconst im:\nconst reel");
+		exit(1);
 	}
-	if (ft_strcmp(s[1], "julia") != 0 && ft_strcmp(s[1], "mandelbrot") != 0 && ft_strcmp(s[1], "burningship") != 0)
+	if (ft_strcmp(s[1], "julia") != 0 && ft_strcmp(s[1], "mandelbrot") != 0
+		&& ft_strcmp(s[1], "burningship") != 0)
 	{
-		ft_putstr("ERROR fractale non reconnu");
-		ft_putstr("\n nom : \n si julia \n const im: \n const reel");
-		exit(0);
+		ft_putstr("\033[0;31mERROR fractale non reconnu");
+		ft_putstr("\033[0;33m\n nom : \n si julia \n const im: \n const reel");
+		exit(1);
 	}
 	if (ft_strcmp(s[1], "julia") == 0 && c < 4)
 	{
-		ft_putstr("ERROR nb d'argument invalide");
-		ft_putstr("\n nom : \n si julia \n const im: \n const reel");
-		exit(0);
+		ft_putstr("\033[0;31mERROR nb d'argument invalide");
+		ft_putstr("\033[0;33m\nnom :\nsi julia\nconst im:\nconst reel");
+		exit(1);
+	}
+	else if (c > 2 && ft_strcmp(s[1], "julia") != 0)
+	{
+		ft_putstr("\033[0;31mERROR trop d'argument");
+		ft_putstr("\033[0;33m\nnom :\nsi julia\nconst im:\nconst reel");
+		exit(1);
 	}
 }
 
@@ -45,13 +52,13 @@ void	ini_img(t_data *img, char **v)
 {
 	if (ft_strcmp(v[1], "julia") == 0)
 	{
-		img->fract.ci = ft_atof(v[2], 0, 0);
-		img->fract.cr = ft_atof(v[3], 0, 0);
+		img->fract.ci = ft_atof(v[3], 0, 0);
+		img->fract.cr = ft_atof(v[2], 0, 0);
 		img->name = 1;
 	}
 	else if (ft_strcmp(v[1], "mandelbrot") == 0)
 		img->name = 2;
-	else 
+	else
 		img->name = 3;
 	img->fract.xmax = 2;
 	img->fract.xmin = -2;
@@ -63,9 +70,8 @@ void	ini_img(t_data *img, char **v)
 	img->addr = mlx_get_data_addr(img->imp, &img->bits_per_pixel, \
 	&img->size_line, &img->endian);
 	img->rgb.r = 255;
-	img->rgb.g = 21;
-	img->rgb.b = 21;
-
+	img->rgb.g = 17;
+	img->rgb.b = 17;
 }
 
 int	main(int c, char **v)

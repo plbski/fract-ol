@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:38:33 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 12:00:17 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/21 17:38:21 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ int	set_color(int i, t_data *data)
 
 	if (i == MAXITER)
 		return (0x000000);
-	else
+	else if (i != 0)
 	{
 		r = (i * data->rgb.r) % 256;
 		g = (i * data->rgb.g) % 256;
 		b = (i * data->rgb.b) % 256;
 		return ((r << 16) + (g << 8) + b);
 	}
+	else
+		return ((data->rgb.r << 16) + (data->rgb.g << 8) + data->rgb.b);
 }
 
 void	put_pixel(t_data *data, int color, int x, int y)
@@ -60,7 +62,6 @@ void	julia(t_data *data, t_fractale *fract)
 	double	z_re;
 	double	z_im ;
 	int		color;
-	
 
 	y = 0;
 	while (y < HEIGTH)

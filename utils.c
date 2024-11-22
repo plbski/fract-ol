@@ -6,7 +6,7 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:50:51 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/20 11:13:11 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/22 11:12:49 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_putstr(char *s)
 void	msg_error(int i)
 {
 	ft_putstr("ERROR entrer des constante invalide");
+	ft_putstr("\033[0;33mnom :\nsi julia\nconst im:\nconst reel");
 	exit(i);
 }
 
@@ -42,7 +43,7 @@ double	ft_fraction(char *s, int i, double fraction)
 		i ++;
 	}
 	if (s[i] != '\0')
-		msg_error(0);
+		msg_error(1);
 	return (fraction / diviseur);
 }
 
@@ -53,9 +54,9 @@ double	ft_atof(char *s, double decimal, double fraction)
 
 	p = 1;
 	i = 0;
-	if (s[0] != '-' && s[0] != '+' && (s[i] < '0' && s[i] < '9'))
-		msg_error(0);
-	if (s[0] == '-' || s[0] == '+')
+	if (s[0] != '-' && s[0] != '+' && (s[0] < '0' || s[0] > '9'))
+		msg_error(1);
+	else if (s[0] == '-' || s[0] == '+')
 	{
 		if (s[0] == '-')
 			p *= -1;
@@ -74,9 +75,18 @@ double	ft_atof(char *s, double decimal, double fraction)
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (&s1[i] == &s2[i] && s1[i])
+	j = 0;
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] == s2[i])
+			j ++;
 		i ++;
-	return (s1[i] - s2[i]);
+	}
+	if (i == j && s1[i] == '\0' && s2[i] == '\0')
+		return (0);
+	else
+		return (1);
 }

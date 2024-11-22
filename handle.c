@@ -6,13 +6,13 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:16:38 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 11:46:54 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/21 17:40:01 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractole.h"
 
-void manage_const(int key_press, t_fractale *fract)
+void	manage_const(int key_press, t_fractale *fract)
 {
 	if (key_press == CRP)
 		fract->cr += 0.1;
@@ -23,7 +23,8 @@ void manage_const(int key_press, t_fractale *fract)
 	else if (key_press == CIM)
 		fract->ci -= 0.1;
 }
-void color_change(t_rgb *rgb, int key)
+
+void	color_change(t_rgb *rgb, int key)
 {
 	if (key == ONE)
 	{
@@ -39,9 +40,9 @@ void color_change(t_rgb *rgb, int key)
 	}
 	else if (key == THREE)
 	{
-		rgb->r = 1;
-		rgb->g = 0;
-		rgb->b = 3;
+		rgb->r = 255;
+		rgb->g = 17;
+		rgb->b = 17;
 	}
 	else if (key == FOUR)
 	{
@@ -50,6 +51,7 @@ void color_change(t_rgb *rgb, int key)
 		rgb->b = 0;
 	}
 }
+
 int	handle_key(int key_press, t_data *data)
 {
 	if (key_press == ESC)
@@ -62,7 +64,8 @@ int	handle_key(int key_press, t_data *data)
 		mouve(&data->fract, key_press);
 	else if (key_press >= 18 && key_press <= 21)
 		color_change(&data->rgb, key_press);
-	else if (key_press == CRP || key_press == CRM || key_press == CIP || key_press == CIM)
+	else if (key_press == CRP || key_press == CRM
+		|| key_press == CIP || key_press == CIM)
 		manage_const(key_press, &data->fract);
 	if (data->name == 2)
 		mandelbrot(data, &data->fract);
