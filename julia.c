@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:38:33 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 17:38:21 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:31 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 int	set_color(int i, t_data *data)
 {

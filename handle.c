@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:16:38 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 17:40:01 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:29 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 void	manage_const(int key_press, t_fractale *fract)
 {

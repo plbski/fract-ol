@@ -23,6 +23,8 @@ MLX_PATH = minilibx
 # Règle principale
 all: $(MLX_PATH)/libmlx.a $(NAME)
 
+bonus: all
+
 # Compilation de l'exécutable avec MinilibX
 $(NAME): $(OBJET)
 	@$(CC) $(OBJET) $(LDFLAGS) -o $(NAME)

@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 17:50:51 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/22 11:12:49 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:34 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 void	ft_putstr(char *s)
 {

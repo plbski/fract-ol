@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:18:32 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/22 11:11:12 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:35 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 int	close_prog(void *param)
 {

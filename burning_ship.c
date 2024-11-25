@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:40:42 by pbuet             #+#    #+#             */
-/*   Updated: 2024/11/21 11:51:08 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:27 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 int	draw_burningship( double x, double y, double z_im, double z_re)
 {

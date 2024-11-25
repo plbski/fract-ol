@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:11:07 by plbuet            #+#    #+#             */
-/*   Updated: 2024/11/21 11:52:12 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:36 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 void	zoomdown(t_data *data, t_fractale *fract, int x, int y)
 {

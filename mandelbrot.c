@@ -6,11 +6,11 @@
 /*   By: pbuet <marvin@42lausanne.ch>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:37:46 by plbuet            #+#    #+#             */
-/*   Updated: 2024/11/21 11:40:16 by pbuet            ###   ########.fr       */
+/*   Updated: 2024/11/25 10:42:33 by pbuet            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractole.h"
+#include "fractol.h"
 
 int	draw_mandelbrot( double x, double y, double z_im, double z_re)
 {
